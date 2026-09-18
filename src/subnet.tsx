@@ -91,9 +91,7 @@ function Results({ info }: { info: SubnetInfo }) {
           label="Addresses"
           copy={info.size.toString()}
         />
-        {info.netmask ? (
-          <ValueItem info={info} icon={Icon.Code} value={info.netmask} label="Netmask" />
-        ) : null}
+        {info.netmask ? <ValueItem info={info} icon={Icon.Code} value={info.netmask} label="Netmask" /> : null}
       </List.Section>
 
       <List.Section title="Navigate">
@@ -103,9 +101,7 @@ function Results({ info }: { info: SubnetInfo }) {
         {halves ? (
           <NavigationItem info={info} target={halves[1]} label="Split in two · second half" icon={Icon.ArrowDown} />
         ) : null}
-        {next ? (
-          <NavigationItem info={info} target={next} label="Next subnet" icon={Icon.ArrowRight} />
-        ) : null}
+        {next ? <NavigationItem info={info} target={next} label="Next subnet" icon={Icon.ArrowRight} /> : null}
         {previous ? (
           <NavigationItem info={info} target={previous} label="Previous subnet" icon={Icon.ArrowLeft} />
         ) : null}
@@ -167,7 +163,9 @@ function NavigationItem({
       icon={icon}
       title={cidr}
       subtitle={label}
-      accessories={[{ text: `${formatCount(1n << BigInt(target.bits - target.prefix), target.bits - target.prefix)} addresses` }]}
+      accessories={[
+        { text: `${formatCount(1n << BigInt(target.bits - target.prefix), target.bits - target.prefix)} addresses` },
+      ]}
       actions={
         <ActionPanel>
           <Action.Push title="Open Subnet" icon={Icon.ArrowRight} target={<SubnetList initialText={cidr} />} />
