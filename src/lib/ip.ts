@@ -38,10 +38,6 @@ export interface SubnetInfo extends Subnet {
   hostBits: number;
   /** IPv4 only. */
   netmask?: string;
-  /** IPv4 only. */
-  wildcard?: string;
-  /** IPv4 only: addresses a host can actually use. */
-  usable?: { count: bigint; first: string; last: string };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -315,20 +311,7 @@ export function describe(input: string): SubnetInfo | null {
   };
 
   if (subnet.version === 4) {
-    const mask = maskFor(subnet.prefix, subnet.bits);
-    info.netmask = formatIPv4(mask);
-    info.wildcard = formatIPv4(~mask & maxValue(subnet.bits));
-
-    if (subnet.prefix <= 30) {
-      info.usable = {
-        count: size - 2n,
-        first: formatIPv4(subnet.network + 1n),
-        last: formatIPv4(last - 1n),
-      };
-    } else {
-      // /31 is a point-to-point link (RFC 3021), /32 is a single host.
-      info.usable = { count: size, first: info.networkText, last: info.lastText };
-    }
+    info.netmask = formatIPv4(maskFor(subnet.prefix, subnet.bits));
   }
 
   return info;
@@ -344,10 +327,6 @@ export function summary(info: SubnetInfo): string {
     `Addresses:   ${formatCount(info.size, info.hostBits)}`,
   ];
   if (info.netmask) lines.push(`Netmask:     ${info.netmask}`);
-  if (info.wildcard) lines.push(`Wildcard:    ${info.wildcard}`);
-  if (info.usable) {
-    lines.push(`Usable:      ${info.usable.first} - ${info.usable.last} (${info.usable.count.toLocaleString("en-US")})`);
-  }
   lines.push(`Version:     IPv${info.version}`);
   return lines.join("\n");
 }

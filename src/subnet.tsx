@@ -94,20 +94,6 @@ function Results({ info }: { info: SubnetInfo }) {
         {info.netmask ? (
           <ValueItem info={info} icon={Icon.Code} value={info.netmask} label="Netmask" />
         ) : null}
-        {info.wildcard ? (
-          <ValueItem info={info} icon={Icon.Code} value={info.wildcard} label="Wildcard mask" />
-        ) : null}
-        {info.usable ? (
-          <ValueItem
-            info={info}
-            icon={Icon.Person}
-            value={`${info.usable.first} - ${info.usable.last}`}
-            label="Usable hosts"
-            tag={info.usable.count.toLocaleString("en-US")}
-            copy={`${info.usable.first} - ${info.usable.last}`}
-          />
-        ) : null}
-        <ValueItem info={info} icon={Icon.Clipboard} value={info.cidr} label="CIDR" />
       </List.Section>
 
       <List.Section title="Navigate">

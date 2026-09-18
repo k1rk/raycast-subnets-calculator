@@ -26,10 +26,6 @@ group("IPv4", () => {
     assert.equal(net.prefix, 16);
     assert.equal(net.size, 65536n);
     assert.equal(net.netmask, "255.255.0.0");
-    assert.equal(net.wildcard, "0.0.255.255");
-    assert.equal(net.usable?.count, 65534n);
-    assert.equal(net.usable?.first, "10.0.0.1");
-    assert.equal(net.usable?.last, "10.0.255.254");
   });
 
   it("splits in two and finds the next block", () => {
@@ -62,8 +58,6 @@ group("IPv4", () => {
     assert.equal(nextSubnet(info("255.0.0.0/8")), null);
     assert.equal(supernet(info("0.0.0.0/0")), null);
     assert.equal(splitInTwo(info("10.0.0.1/32")), null);
-    // /31 is a point-to-point link, both addresses are usable (RFC 3021).
-    assert.equal(info("10.0.0.0/31").usable?.count, 2n);
   });
 
   it("rejects junk", () => {

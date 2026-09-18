@@ -10,9 +10,7 @@ Type `10.0.0.0/16` and get:
 | Network range | `10.0.0.0 - 10.0.255.255` |
 | Prefix | `/16` |
 | Addresses | `65,536` |
-| Netmask / wildcard (IPv4) | `255.255.0.0` / `0.0.255.255` |
-| Usable hosts (IPv4) | `10.0.0.1 - 10.0.255.254` |
-| CIDR | `10.0.0.0/16` |
+| Netmask (IPv4) | `255.255.0.0` |
 
 …plus a **Navigate** section that reopens the calculator on a neighbouring block:
 
