@@ -16,10 +16,10 @@ import {
 const EXAMPLES = ["10.0.0.0/16", "192.168.1.0/24", "172.16.5.23/20", "2001:db8::/32", "fd00::/48"];
 
 export default function Command(props: LaunchProps<{ arguments: { cidr?: string } }>) {
-  return <SubnetList initialText={props.arguments?.cidr ?? ""} />;
+  return <SubnetList initialText={props.arguments?.cidr ?? ""} isRoot />;
 }
 
-function SubnetList({ initialText }: { initialText: string }) {
+function SubnetList({ initialText, isRoot = false }: { initialText: string; isRoot?: boolean }) {
   const [searchText, setSearchText] = useState(initialText);
   const info = useMemo(() => describe(searchText), [searchText]);
   const trimmed = searchText.trim();
@@ -30,7 +30,7 @@ function SubnetList({ initialText }: { initialText: string }) {
       searchText={searchText}
       onSearchTextChange={setSearchText}
       searchBarPlaceholder="Subnet or IP — 10.0.0.0/16, 192.168.1.5, 2001:db8::/32"
-      navigationTitle={info ? info.cidr : "Subnet Calculator"}
+      navigationTitle={isRoot || !info ? undefined : info.cidr}
     >
       {trimmed === "" ? (
         <List.Section title="Examples">

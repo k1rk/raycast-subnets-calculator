@@ -12,7 +12,7 @@ Type `10.0.0.0/16` and get:
 | Addresses | `65,536` |
 | Netmask (IPv4) | `255.255.0.0` |
 
-…plus a **Navigate** section that reopens the calculator on a neighbouring block:
+…plus a **Navigate** section that reopens the calculator on a neighboring block:
 
 - Split in two — `10.0.0.0/17` and `10.0.128.0/17`
 - Next subnet — `10.1.0.0/16`
@@ -27,7 +27,7 @@ Type `10.0.0.0/16` and get:
 - `10.0.0.0/16`, `2001:db8::/32`
 - `10.0.0.0/255.255.0.0` (dotted netmask)
 - `192.168.1.5` (bare address, treated as `/32`; IPv6 as `/128`)
-- `172.16.5.23/20` — host bits are normalised to `172.16.0.0/20`, and the address you typed is shown as a tag
+- `172.16.5.23/20` — host bits are normalized to `172.16.0.0/20`, and the address you typed is shown as a tag
 - Compressed, expanded, IPv4-mapped and zone-suffixed IPv6
 
 ## Develop

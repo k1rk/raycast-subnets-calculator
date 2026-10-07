@@ -1,8 +1,8 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "subnets",
-  "title": "Subnets",
-  "description": "IPv4 and IPv6 subnet calculator: network address, range, prefix, address count, netmask, and one-keystroke navigation to the halves, neighbours, and supernet of a block.",
+  "title": "Subnet Calculator",
+  "description": "Break down an IPv4 or IPv6 subnet and jump to its halves, neighbors, and supernet without retyping the CIDR.",
   "icon": "icon.png",
   "author": "max",
   "platforms": ["macOS"],
@@ -12,8 +12,7 @@
     {
       "name": "subnet",
       "title": "Subnet Calculator",
-      "subtitle": "Subnets",
-      "description": "Break down an IPv4 or IPv6 subnet and walk through neighbouring blocks.",
+      "description": "Break down an IPv4 or IPv6 subnet and walk through neighboring blocks.",
       "mode": "view",
       "keywords": ["cidr", "ip", "ipv4", "ipv6", "netmask", "network", "prefix"],
       "arguments": [
