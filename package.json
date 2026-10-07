@@ -4,7 +4,7 @@
   "title": "Subnet Calculator",
   "description": "Break down an IPv4 or IPv6 subnet and jump to its halves, neighbors, and supernet without retyping the CIDR.",
   "icon": "icon.png",
-  "author": "max",
+  "author": "don.draper",
   "platforms": ["macOS"],
   "categories": ["Developer Tools"],
   "license": "MIT",
